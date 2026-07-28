@@ -1,6 +1,6 @@
 # Credimi Extra Template
 
-This GitHub template starts a new Credimi Extra with its governance,
+This GitHub template starts a new Credimi Extras mini-app with its governance,
 standards-neutral documentation, and authoritative Credimi design assets.
 
 It deliberately contains no application implementation. A derived project may
