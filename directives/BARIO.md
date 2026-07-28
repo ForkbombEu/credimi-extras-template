@@ -52,7 +52,7 @@ Before modifying anything:
 2. Inspect repository structure
 3. Do NOT infer or adopt undocumented conventions
 4. If a convention is observed but not defined in BARIO.md:
-   → record it in `HITL.md`
+   → record it in `./directives/HITL.md`
 5. Proceed using ONLY known rules from BARIO.md
 6. Make the smallest safe change
 7. Validate the change
@@ -102,7 +102,7 @@ If the repository has no formatting task or formatter defined:
 
 → STOP
 
-→ append the missing formatting rule to `HITL.md`
+→ append the missing formatting rule to `./directives/HITL.md`
 
 → do NOT commit
 
@@ -450,4 +450,3 @@ After each development task and before each commit, the README.md should be upda
 - Quick GUI guide (if applicable): Organize this in subchapters. Describe what the GUI offers, what can be see on the homepage, how to perform actions that are related to the main functionalities of the app
 - CLI Examples (if applicable): a Table listing all the CLI functions, with one example per functionalities
 - API Examples (if applicable): a Table listing all the API functions, with one curl example per API
-  
