@@ -18,6 +18,8 @@ The authoritative design assets are in [HITL/](HITL/):
 - `HITL/style.css`
 - `HITL/credimi_logo.svg`
 - `HITL/credimi_logo_negative.svg`
+- `HITL/credimi_logo-transp.svg`
+- `HITL/credimi_logo-transp_white.svg`
 
 Follow [docs/CREATE_PROJECT.md](docs/CREATE_PROJECT.md) when creating a
 project from this template. Design and branding rules are in

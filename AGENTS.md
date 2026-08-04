@@ -18,3 +18,11 @@ If something looks like a convention but is not defined:
 
 → append it to `./directives/HITL.md`  
 → do NOT use it
+
+## Lint
+
+Each derived project SHOULD lint its stylesheets for CSS custom properties that
+are referenced through `var(--x)` but never defined anywhere in the cascade —
+stylelint's undefined-custom-properties rule, or the closest equivalent for the
+chosen stack. An undefined custom property drops the declaration silently
+instead of failing, so nothing surfaces the bug except looking at the page.

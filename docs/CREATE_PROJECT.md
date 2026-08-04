@@ -6,8 +6,10 @@
 4. Review and populate `STANDARDS.md` with only confirmed applicable standards.
 5. Copy the HITL assets to stack-appropriate runtime locations.
 6. Add byte-equality tests for those copies.
-7. Implement only the CLI, web, and API interfaces the application needs.
-8. Add stack-native build, format, lint, test, Docker, and CI configuration.
+7. Add the Credimi Extras banner markup and styling described in `DESIGN.md`,
+   using the wordmark assets from step 5.
+8. Implement only the CLI, web, and API interfaces the application needs.
+9. Add stack-native build, format, lint, test, Docker, and CI configuration.
 
 Choose Go when direct Go import, a self-contained binary, or low runtime
 overhead materially matters. Choose Node.js with TypeScript when the existing
