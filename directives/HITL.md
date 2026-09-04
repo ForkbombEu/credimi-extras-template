@@ -64,3 +64,15 @@ If unsure:
 - location: repository root
 - evidence: `Taskfile.yml` defines `lint` and `lint:design`, but no formatting task or formatter is defined.
 - rationale: `BARIO.md` requires formatting through a repository-defined formatter before commits.
+
+- id: hitl-0003
+- observation: The canonical stylesheet was moved out of `HITL/` and edited, contradicting a frozen human brief.
+- location: `brand/style.css`, `HITL/01-harmonize-credimi-extras.md`
+- evidence: `HITL/01-harmonize-credimi-extras.md` names `HITL/style.css` as the canonical design input and requires byte-equality tests against it. On human instruction the file was moved to `brand/style.css` and merged with the design system's `colors_and_type.css`; its SHA-256 pin no longer applies. The four logo SVGs moved to `brand/logos/` unchanged, so their pins still verify.
+- rationale: The frozen brief and the current asset layout disagree. Either the brief is superseded and should be reissued, or the merge should be reverted. Only a human can decide which.
+
+- id: hitl-0004
+- observation: Both empty-state illustrations named by the design spec are unusable.
+- location: Credimi Design System project, `assets/404-computer.svg` and `assets/maintenance.svg`
+- evidence: Each file is a `<rect>` filled by a pattern referencing an `<image>` element that carries no data. Nothing renders. `DESIGN.md` §9 and §12 require an illustration in every empty and error state.
+- rationale: The requirement cannot be met until working files exist upstream.
