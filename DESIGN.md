@@ -450,7 +450,7 @@ really needs to "lift" — usually it doesn't.
 
 ### Container
 
-- **Max content width**: 1280px (`--max-width`), centered.
+- **Max content width**: 1440px (`--max-width`), centered.
 - **Page side padding**: 24–32px on desktop, 16px on mobile.
 - **Topbar**: sticky, white, 1px hairline bottom border, no shadow, 56px tall
   (`--topbar-height`).
