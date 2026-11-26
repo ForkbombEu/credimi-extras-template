@@ -39,6 +39,7 @@ override — [§16](#16-merge-record) records how that came to be.
 15. [Do & Don't](#15-do--dont)
 16. [Merge record](#16-merge-record)
 17. [Page layout update](#17-page-layout-update)
+18. [Typography update](#18-typography-update)
 
 ---
 
@@ -144,8 +145,8 @@ Keep these terms **exact**, never paraphrase:
 | Run counts | `N over M tests passed` | `20 over 30 tests passed` |
 | Date | `DD/MM/YYYY` | `24/04/2026` |
 | Date + time | `DD MMM YYYY, HH:mm` (24h) | `20 May 2026, 14:32` |
-| Identifier | monospace, all-caps | `OID4VCI · DRAFT 13` |
-| Version | semver, monospace | `v2.4.1` |
+| Identifier | all-caps, Inter with `.data` | `OID4VCI · DRAFT 13` |
+| Version | semver, Inter with `.data` | `v2.4.1` |
 
 ### Emoji policy
 
@@ -297,8 +298,11 @@ lavender or solid indigo.
 
 **Inter** is the only sans family, at weights 400 / 500 / 600 / 700 / 800 / 900.
 
-**Source Code Pro** for monospace — used in the code-editor frame, test-ID
-rows, and inline identifiers, at weights 400 / 500 / 700.
+**Source Code Pro** for monospace, **only for code**: `code`, `pre`,
+`.inline-code`, `.mono` / `.font-mono`, and the [deeplink](#qr-code-deeplink-and-copy-button).
+Weights 400 / 500 / 700. Identifiers, test names, URLs, dates and versions are
+not code; they are Inter (see
+[Numbers in display contexts](#numbers-in-display-contexts)).
 
 Both are **self-hosted**, vendored as variable TTFs in
 [`brand/fonts/`](brand/fonts/) under SIL OFL 1.1. The design system loads them
@@ -311,6 +315,12 @@ Reach for the family through its token — `var(--font-sans)`,
 `var(--font-display)`, `var(--font-mono)` — never a literal family name. The
 merged stylesheet routes every rule through those three tokens, so a family
 swap is a one-line change instead of a hunt through 14 hardcoded declarations.
+
+`--font-data-features` turns on three Inter OpenType features for text that is
+data rather than prose: `tnum` (tabular digits, so columns align), `zero`
+(slashed zero, so `0` is not `O`), and `ss02` (disambiguation, so `I`, `l` and
+`1` differ). Apply it with the `.data` utility class, or with
+`font-feature-settings: var(--font-data-features)` in a component rule.
 
 > The stylesheet used to ship **Manrope** and **JetBrains Mono**. Both were
 > dropped in the merge ([§16](#16-merge-record)); no file references them and
@@ -355,16 +365,16 @@ not used in product UI.
 
 ### Numbers in display contexts
 
-Monospace (`var(--font-mono)`) for any number that's an **identifier** (run counts, versions, IDs,
-timestamps, test names like
-`sd_jwt_vc:did:request_uri_unsigned:direct_post`). Sans for any number that's a
-**measure** (percent, totals, durations).
+Every number is Inter. A number that's an **identifier** (run counts, versions,
+IDs, timestamps, dates, test names like
+`sd_jwt_vc:did:request_uri_unsigned:direct_post`) takes `.data`. A number
+that's a **measure** (percent, totals, durations) is plain sans.
 
 ```
-312/412 runs       ← monospace (counts as identifier)
+312/412 runs       ← .data (counts as identifier)
 80% compliant      ← sans, weight 500 (measure)
-v2.4.1             ← monospace
-20/05/2026         ← monospace
+v2.4.1             ← .data
+20/05/2026         ← .data
 1m 52s             ← sans
 ```
 
@@ -704,9 +714,9 @@ see below.
 A row of key figures, such as a list's entries and how many are revoked: each
 is a card (above) holding a value in display type (700, `--fs-3xl`,
 `--brand-primary`) above its label in the [eyebrow](#eyebrow-pattern) style.
-Four to a row, two on mobile. Values are measures, so they are sans (see
+Four to a row, two on mobile. Values are measures, so they are plain sans (see
 [Numbers in display contexts](#numbers-in-display-contexts)); a value that is an
-identifier, such as a version, is monospace.
+identifier, such as a version, takes `.data`.
 
 ```html
 <div class="metric-grid">
@@ -776,7 +786,8 @@ band label in the small `eyebrow` style next to the number.
 ### Link cards
 
 A whole card that opens a document, usually in a new tab: its title, its URL in
-monospace, and the arrow-up-right glyph in the top-right corner. Its border is
+small muted Inter with the data features, and the arrow-up-right glyph in the
+top-right corner. Its border is
 `--brand-primary`; on hover it lifts 4px with `--shadow-md`, the only card that
 moves, because the whole card is the link. A card whose target is not a safe
 URL is rendered as an `<article>`: hairline border, no arrow, no lift.
@@ -890,7 +901,10 @@ related service.
 A QR code sits in a small white box, 12px of white around the code. The deeplink
 it carries runs underneath at exactly the box's width, in monospace
 `--brand-primary`, breaking at any character so every line but the last fills
-the width; it is underlined only on hover. Under the deeplink, a small copy
+the width; it is underlined only on hover. The deeplink is the one non-code
+string kept in monospace: it is long, copied and compared character by
+character, and only a fixed-width face fills every line evenly when it breaks
+anywhere. Under the deeplink, a small copy
 button: transparent with `--fg-muted` text, turning `--border` grey with `--fg`
 text on hover, never the primary blue. Its copy icon is the one icon a button
 may carry here, because it says what the button does.
@@ -919,8 +933,8 @@ Name              Last check       Pass ratio
 DIDroom · OID4VCI 24/04/2026       20 over 30 tests passed   [80% compliant]
 ```
 
-Always: name in sans-bold, dates in monospace, pass-ratio in sans + monospace
-fraction, score pill on the right.
+Always: name in sans-bold, dates in `.data`, pass-ratio in sans with the
+fraction in `.data`, score pill on the right.
 
 ### Pipeline detail
 
@@ -1004,7 +1018,7 @@ category, so the pill and the plain label cannot drift apart.
   link cards and live panels.
 - ✓ Keep cards hairline-bordered, shadow-less (link cards lift on hover only).
 - ✓ Use Inter at 700 for display, 400–500 for body.
-- ✓ Use `DD/MM/YYYY` for dates, monospace for IDs.
+- ✓ Use `DD/MM/YYYY` for dates, `.data` for IDs; monospace only for code.
 - ✓ Match status colors exactly to the semantic palette.
 - ✓ Use the fold motif only in the hero band.
 - ✓ Show numbers unsoftened ("20 over 30 tests passed").
@@ -1143,6 +1157,32 @@ applications built on them keep their look until each migrates in its own task.
 
 The Credimi Design System project is the canonical specification and was not
 updated by this change; it needs the same update so the two agree again.
+
+---
+
+## 18. Typography update
+
+On 26/11/2026 Source Code Pro was narrowed to code. Everything else it used to
+set moved to Inter, with `--font-data-features` (tabular digits, slashed zero,
+disambiguation) wherever the text is data rather than prose
+([§6](#6-typography)).
+
+| Rule | Before | After |
+|---|---|---|
+| `.doc-id`, `.doc-id-display`, `.evidence-slug`, `.ref-source`, `.test-id` | Source Code Pro | Inter + `--font-data-features` |
+| `.link-card-url` | Source Code Pro | Inter + `--font-data-features` |
+| `.disclosure > summary::after` (˅ / ˄) | Source Code Pro | Inter |
+| Dates, versions, run counts, identifiers in app markup | monospace | Inter + `.data` |
+| `code`, `pre`, `.mono`, `.font-mono`, `.inline-code`, `.deeplink` | Source Code Pro | unchanged |
+
+New: the `--font-data-features` token and the `.data` utility class.
+Applications that set dates, versions or IDs in `.mono` or `.font-mono`
+should switch those elements to `.data`; the classes themselves are unchanged
+and now mean code only.
+
+The Credimi Design System project is the canonical specification and was not
+updated by this change; it still sets identifiers in monospace and needs the
+same update so the two agree again.
 
 ---
 
