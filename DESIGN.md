@@ -203,7 +203,7 @@ on a dark scrim.
 ## 5. Color
 
 Always reference the custom property, never inline a hex. Every token below is
-declared in `brand/style.css` — 102 of them, with no undefined `var()`
+declared in `brand/style.css` — 104 of them, with no undefined `var()`
 reference anywhere in the file.
 
 ### Primary — deep indigo
@@ -377,7 +377,24 @@ v2.4.1             ← .data
 1m 52s             ← sans
 ```
 
+### JSON and code output
+
+Render JSON and source output as a focusable Shiki Catppuccin Frappé `<pre>`,
+using Credimi's class contract:
+
+```html
+<pre class="shiki catppuccin-frappe p-4 w-full min-h-0 grow h-full overflow-auto code-display-scroller scrollbar-on-dark text-sm transition-all max-h-[350px]" tabindex="0"><code>…</code></pre>
+```
+
+`code-display-scroller` supplies the utility-class layout semantics in
+`brand/style.css`, so derived projects do not need Tailwind. It grows within a
+flex region, fills its available height, scrolls in both directions, and caps
+its visible height at 350px. Shiki provides syntax spans and the Catppuccin
+Frappé palette; the shared stylesheet provides the matching surface and dark
+scrollbar. Keep failures in alerts, not in the code output.
+
 ---
+
 
 ## 7. Spacing, radii, elevation
 
@@ -1142,7 +1159,7 @@ The logo SVGs kept their bytes through the move, so their SHA-256 pins in
 ### Still required
 
 Run the undefined-custom-property lint that `AGENTS.md` requires. It passes on
-`brand/style.css` today — 102 tokens defined, zero undefined `var()` references
+`brand/style.css` today — 104 tokens defined, zero undefined `var()` references
 — and it is what keeps a future edit from silently dropping a declaration.
 
 ---

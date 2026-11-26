@@ -36,6 +36,10 @@ The four logos are frozen and SHA-256 pinned in [DESIGN.md](DESIGN.md) §1.
 The topbar pairs the 32px `credimi_logo.svg` mark with the project's visible
 title; it does not use either wordmark.
 
+For JSON and code output, use the shared Credimi class contract:
+`shiki catppuccin-frappe p-4 w-full min-h-0 grow h-full overflow-auto code-display-scroller scrollbar-on-dark text-sm transition-all max-h-[350px]`.
+`code-display-scroller` provides the equivalent layout semantics without requiring Tailwind.
+
 [HITL/](HITL/) now holds only human briefs.
 
 Follow [docs/CREATE_PROJECT.md](docs/CREATE_PROJECT.md) when creating a
