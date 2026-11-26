@@ -33,6 +33,9 @@ brand/logos/credimi_logo-transp_white.svg  wordmark, white
 The four logos are frozen and SHA-256 pinned in [DESIGN.md](DESIGN.md) §1.
 `brand/style.css` is maintained, not frozen — it is where the brand lives.
 
+The topbar pairs the 32px `credimi_logo.svg` mark with the project's visible
+title; it does not use either wordmark.
+
 [HITL/](HITL/) now holds only human briefs.
 
 Follow [docs/CREATE_PROJECT.md](docs/CREATE_PROJECT.md) when creating a
