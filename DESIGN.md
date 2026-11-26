@@ -689,6 +689,7 @@ same update so the two agree again.
 | Variant | Border | Text | Icon |
 |---|---|---|---|
 | **Success** | `#096D46` (`--success-border`) | `#096D46` | `check-check` |
+| **Warning** | `--warning-fg` | `--warning-fg` | `triangle-alert` |
 | **Destructive** | `#EF4343` (`--destructive`) | `#EF4343` | `triangle-alert` |
 | **Info** | `--brand-primary` | `--brand-primary` | `circle-info` |
 

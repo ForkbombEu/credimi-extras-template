@@ -40,6 +40,8 @@ For JSON and code output, use the shared Credimi class contract:
 `shiki catppuccin-frappe p-4 w-full min-h-0 grow h-full overflow-auto code-display-scroller scrollbar-on-dark text-sm transition-all max-h-[350px]`.
 `code-display-scroller` provides the equivalent layout semantics without requiring Tailwind.
 
+Alerts support success, warning (`.alert-warning`), destructive, and info variants; warning reuses the semantic yellow palette.
+
 [HITL/](HITL/) now holds only human briefs.
 
 Follow [docs/CREATE_PROJECT.md](docs/CREATE_PROJECT.md) when creating a
