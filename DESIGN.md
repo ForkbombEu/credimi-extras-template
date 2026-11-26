@@ -453,10 +453,12 @@ really needs to "lift" — usually it doesn't.
 - **Page side padding**: 24–32px on desktop, 16px on mobile.
 - **Topbar**: sticky, white, 1px hairline bottom border, no shadow, 56px tall
   (`--topbar-height`).
-- **Footer**: deep-indigo slab, full-bleed, with a `rgba(0,0,0,0.3)` overlay
-  bottom strip reading "Proudly developed by ForkBomb BV". The only sanctioned
-  use of translucency — the bottom banner strip in
-  [§13](#13-credimi-extras-cross-promotional-banner) rides on this same fill.
+- **Footer**: deep-indigo slab, full-bleed, with two distinct `rgba(0,0,0,0.3)`
+  bottom sub-bars. The first reads “Proudly developed by
+  [ForkBomb BV](https://forkbomb.solutions/)”; the company name is the only
+  link, opens in a new tab, and uses `rel="noopener"`. The second is the
+  Credimi Extras banner in [§13](#13-credimi-extras-cross-promotional-banner).
+  These are the only sanctioned uses of translucency.
 
 ### Topbar identity
 
@@ -983,18 +985,23 @@ the page body. It uses the `--brand-secondary` background and `--brand-primary`
 text of the application's own palette, centred content, and an inline 16px
 `credimi_logo.svg` (the mark) before the sentence. The trailing word "Credimi" is the link.
 
-The bottom strip closes the existing footer, after any content already there,
-on a translucent dark fill over the footer's own brand background rather than a
-new colour. Its text is white at reduced opacity, and in place of the trailing
-word it inlines the `credimi_logo-transp_white.svg` wordmark at about 16px
-tall, with `alt="Credimi"`.
+The bottom strip closes the existing footer, after any content already there
+and after the separate ForkBomb attribution sub-bar defined in
+[§8](#8-layout--grid). It uses a translucent dark fill over the footer's own
+brand background rather than a new colour. Its text is white at reduced
+opacity, and in place of the trailing word it inlines the
+`credimi_logo-transp_white.svg` wordmark at about 16px tall, with
+`alt="Credimi"`.
 
-Both strips link to `https://credimi.io` in a new tab, with `rel="noopener"`.
-Neither strip is sticky, dismissible, or animated, and neither is clickable as
-a whole: only the trailing word or wordmark is an anchor, never the bar. The
-sentence must read on one line at desktop width and wrap rather than truncate
-at phone width, and the link must be keyboard reachable with a visible focus
-state.
+The two footer sub-bars remain visually and semantically distinct: the
+ForkBomb attribution comes first, and the Credimi Extras strip follows it.
+
+Both Credimi Extras strips link to `https://credimi.io` in a new tab, with
+`rel="noopener"`. Neither strip is sticky, dismissible, or animated, and
+neither is clickable as a whole: only the trailing word or wordmark is an
+anchor, never the bar. The sentence must read on one line at desktop width and
+wrap rather than truncate at phone width, and the link must be keyboard
+reachable with a visible focus state.
 
 Take colours from the tokens in `brand/style.css` rather than hardcoded
 values, and add the banner's rules to the application stylesheet that loads
